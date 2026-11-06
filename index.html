@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>โตเกียวข้อเท็จจริงที่ตัดใจ — สไลด์พิเศษสำหรับคุณลูก</title>
+<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-snap-type:y mandatory;scroll-behavior:smooth}
+body{font-family:'Kanit',sans-serif;background:#0d0f1a;color:#f5f3ee;overflow-x:hidden}
+.slide{min-height:100vh;scroll-snap-align:start;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:7vh 8vw;position:relative;overflow:hidden}
+.num{position:absolute;top:3.5vh;right:5vw;font-size:.85rem;letter-spacing:.2em;color:rgba(245,243,238,.35);z-index:5}
+.kicker{font-size:.95rem;letter-spacing:.3em;text-transform:uppercase;color:#f7c59f;margin-bottom:1.2rem}
+h1{font-size:clamp(2.4rem,7vw,5rem);font-weight:800;line-height:1.15}
+h2{font-size:clamp(1.5rem,4vw,2.7rem);font-weight:800;line-height:1.3;text-align:center}
+.lead{font-size:clamp(1rem,1.9vw,1.2rem);line-height:2;color:#d9d6cf;max-width:60ch;margin-top:1.3rem}
+.hl{color:#ffd166}
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .9s ease,transform .9s ease}
+.reveal.show{opacity:1;transform:none}
+.imgwrap{width:min(660px,86vw);border-radius:16px;overflow:hidden;margin:1.6rem 0;box-shadow:0 22px 55px rgba(0,0,0,.55)}
+.imgwrap img{width:100%;display:block}
+/* hero */
+#hero{background:radial-gradient(1100px 650px at 72% 18%,#3b2f63 0%,#171326 55%,#0d0f1a 100%)}
+.sun{position:absolute;top:8vh;left:8vw;width:120px;height:120px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#ff9e6d,#f7c59f);filter:blur(2px);opacity:.8;animation:float 7s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-16px)}}
+.skyline{position:absolute;bottom:-2px;left:0;width:100%;pointer-events:none}
+/* counter slide */
+.rain{position:absolute;inset:0;pointer-events:none}
+.rain span{position:absolute;top:-15vh;width:2px;height:55px;background:linear-gradient(180deg,rgba(76,201,240,0),#4cc9f0);opacity:.45;animation:fall linear infinite}
+@keyframes fall{to{transform:translateY(135vh)}}
+.bigcounter{font-size:clamp(3.2rem,10vw,7rem);font-weight:800;color:#4cc9f0;margin-top:.6rem}
+/* clock */
+.clock{width:110px;height:110px;border-radius:50%;border:6px solid #ffd166;position:relative;margin:1.2rem auto 0}
+.hand{position:absolute;bottom:50%;left:50%;width:4px;height:40px;background:#ffd166;border-radius:2px;transform-origin:50% 100%;animation:tick 6s linear infinite}
+.hand.m{height:32px;width:3px;opacity:.7;animation-duration:72s}
+@keyframes tick{to{transform:rotate(360deg)}}
+/* exits */
+.exits{display:flex;flex-wrap:wrap;gap:.5rem;max-width:560px;justify-content:center;margin-top:1.5rem}
+.exits span{font-size:.8rem;padding:.35rem .75rem;border:1px solid rgba(245,243,238,.3);border-radius:999px;animation:blink 2.2s ease-in-out infinite}
+.exits span:nth-child(2n){animation-delay:.4s}.exits span:nth-child(3n){animation-delay:.9s}
+@keyframes blink{0%,100%{opacity:.75}50%{opacity:.35}}
+/* steam */
+.steam{display:flex;gap:6px;justify-content:center;margin-top:1.1rem}
+.steam i{width:6px;height:36px;border-radius:4px;background:linear-gradient(180deg,rgba(245,243,238,0),#f5f3ee);animation:rise 2.3s ease-in-out infinite}
+.steam i:nth-child(2){animation-delay:.4s}.steam i:nth-child(3){animation-delay:.8s}.steam i:nth-child(4){animation-delay:1.2s}
+@keyframes rise{0%{transform:translateY(8px);opacity:0}40%{opacity:.8}100%{transform:translateY(-20px);opacity:0}}
+/* lantern */
+.lantern{width:56px;height:74px;border-radius:50% 50% 46% 46%;background:radial-gradient(circle at 40% 30%,#ff8fa3,#e63946);box-shadow:0 0 30px rgba(230,57,70,.55);animation:sway 3.4s ease-in-out infinite;transform-origin:50% 0}
+@keyframes sway{0%,100%{transform:rotate(-5deg)}50%{transform:rotate(5deg)}}
+/* vending glow */
+.glow{animation:pulse 2.6s ease-in-out infinite}
+@keyframes pulse{0%,100%{box-shadow:0 22px 55px rgba(0,0,0,.55)}50%{box-shadow:0 22px 75px rgba(247,197,159,.45)}}
+/* final */
+#final{background:radial-gradient(900px 600px at 50% 80%,#35526b 0%,#171326 60%,#0d0f1a 100%)}
+.btns{margin-top:2.2rem;display:flex;gap:1rem;flex-wrap:wrap;justify-content:center}
+.btn{display:inline-block;padding:.85rem 1.9rem;border-radius:999px;background:#ffd166;color:#22202b;font-weight:600;text-decoration:none;transition:transform .25s}
+.btn:hover{transform:translateY(-3px)}
+.btn.ghost{background:transparent;color:#ffd166;border:1.5px solid #ffd166}
+.decknav{position:fixed;bottom:16px;right:16px;z-index:50;display:flex;flex-direction:column;gap:8px}
+.decknav a{width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.12);color:#ffd166;display:flex;align-items:center;justify-content:center;text-decoration:none;font-size:1.1rem;backdrop-filter:blur(4px)}
+@media(max-width:560px){.slide{padding:6vh 9vw}}
+</style>
+</head>
+<body>
+
+<!-- SLIDE 1 — HERO -->
+<section class="slide" id="hero">
+  <div class="sun"></div>
+  <div class="num">1 / 9</div>
+  <div class="reveal">
+    <div class="kicker">สไลด์พิเศษ • สำหรับคุณลูก</div>
+    <h1>โตเกียว</h1>
+    <h2 style="color:#ffd166;margin-top:.4rem">เมืองที่จริงจังยิ่งกว่านิยาย</h2>
+    <p class="lead">อีกไม่กี่วันก็ได้ลงเครื่องแล้ว 🎉 ก่อนบิน เลี้ยงคุณลูกด้วยข้อเท็จจริงของโตเกียวที่อ่านแล้วอ้าปากค้าง เลื่อนหน้าจอลงไปเรื่อย ๆ เหมือนพลิกสไลด์ได้เลย อ่านชิล ๆ นะ ไม่ต้องสอบเอาแต้ม 🤗</p>
+  </div>
+  <svg class="skyline" viewBox="0 0 1440 220" xmlns="http://www.w3.org/2000/svg" fill="#0a0c16">
+    <rect x="20" y="100" width="70" height="120"/><rect x="100" y="70" width="60" height="150"/>
+    <rect x="170" y="130" width="90" height="90"/><rect x="270" y="50" width="55" height="170"/>
+    <rect x="335" y="110" width="80" height="110"/><polygon points="640,10 655,60 625,60"/>
+    <rect x="630" y="60" width="20" height="160"/><rect x="780,50" y="40" width="0" height="0"/>
+    <polygon points="780,45 800,95 760,95"/><rect x="870" y="80" width="65" height="140"/>
+    <rect x="945" y="45" width="50" height="175"/><rect x="1060" y="120" width="90" height="100"/>
+    <rect x="1160" y="75" width="60" height="145"/><rect x="1230" y="130" width="85" height="90"/>
+    <rect x="1325" y="95" width="55" height="125"/><rect x="1390" y="65" width="45" height="155"/>
+  </svg>
+</section>
+
+<!-- SLIDE 2 — 37 MILLION -->
+<section class="slide">
+  <div class="rain" id="rain"></div>
+  <div class="num">2 / 9</div>
+  <div class="reveal">
+    <div class="kicker">อันดับ 1 ของโลก</div>
+    <h2>พื้นที่เมืองโตเกียวมีคน <span class="hl">มากกว่าประเทศลาว 5 เท่า</span></h2>
+  </div>
+  <div class="bigcounter reveal" id="counter" data-target="37">0 ล้าน</div>
+  <p class="lead reveal">โตเกียวกับปริมณฑลรอบ ๆ มีคนราว <span class="hl">37 ล้านคน</span> — เป็นเขตเมืองที่ใหญ่ที่สุดในโลก คิดเป็นราว 1 ใน 3 ของประชากรญี่ปุ่นทั้งประเทศ ยกกรุงเวียงจันทน์ทั้งเมืองมาผสมกัน 5 ครั้ง ยังไม่เต็มเมืองนี้ 🤯 แล้วที่น่าทึ่งคือ คนขนาดนั้นขยับกันทุกวันโดยที่ระบบรถไฟไม่สะดุด</p>
+</section>
+
+<!-- SLIDE 3 — SHIBUYA CROSSING -->
+<section class="slide">
+  <div class="num">3 / 9</div>
+  <div class="imgwrap glow reveal">
+    <img src="https://images.unsplash.com/photo-1542051841857-5f90071e7989?auto=format&fit=crop&w=900&q=70" alt="ทางม้าลายชิบุยะ" loading="lazy">
+  </div>
+  <div class="reveal">
+    <div class="kicker">จุดข้ามทางม้าลายคนพัน</div>
+    <h2> ชิบุยะ — สัญญาณเขียวหนึ่งครั้ง <span class="hl">ปล่อยคน 3,000 คน</span></h2>
+  </div>
+  <p class="lead reveal">ทางม้าลายตรงหน้าสถานีชิบุยะคือจุดข้ามถนนที่พันกันมากที่สุดในโลก สัญญาณเขียวแต่ละครั้งจะไหลคนจากทุกทิศราว 3,000 คน สลับกันอยู่นี้ตลอดวัน นับได้หลายแสนคนต่อวัน 😅 สิ่งที่เห็นขึ้นบนบรรทัดไม่เห็นคือ — คนข้ามกันแย่งกันโดยไม่ชนกันเสียด้วย มันเป็นศิลปะระดับที่คนโตเกียวไม่รู้ตัว</p>
+</section>
+
+<!-- SLIDE 4 — PUNCTUAL TRAINS -->
+<section class="slide">
+  <div class="num">4 / 9</div>
+  <div class="reveal">
+    <div class="kicker">เหตุการณ์หายาก</div>
+    <h2>รถไฟโตเกียวดีเลย์เฉลี่ยแค่ <span class="hl">ไม่ถึง 1 นาทีต่อปี</span></h2>
+  </div>
+  <div class="clock reveal"><div class="hand"></div><div class="hand m"></div></div>
+  <p class="lead reveal">รถไฟสายหลักในโตเกียวตรงเวลาแบบไม่มีเหตุผล — สถิติดีเลย์เฉลี่ยต่อปีแค่ระดับไม่กี่สิบวินาที ⏱️ ถ้าวันไหนดีเลย์เกิน 5 นาที สถานีจะแจกกระดาษชื่อ <span class="hl">ใบรับรองความล่าช้า</span> ให้พนักงานเอาไปยื่นหัวหน้างาน พิสูจน์ว่ามาสายจริง ไม่ใช่นอนตื่นสายเอง 🤣 ตอนแรกมาถึงจะงงเป็นว่าไอ้เจ้ากระดาษนี่ต้องมีทำไม อยู่ไปสักอาทิตย์แล้วจะร้องว้าว</p>
+</section>
+
+<!-- SLIDE 5 — SHINJUKU -->
+<section class="slide">
+  <div class="num">5 / 9</div>
+  <div class="reveal">
+    <div class="kicker">สถานีที่ใหญ่ที่สุดในโลก</div>
+    <h2>สถานีชินจูกุ — <span class="hl">200 ทางออก, 3.6 ล้านคนต่อวัน</span></h2>
+  </div>
+  <p class="lead reveal">สถานีชินจูกุมีทางออกราว <span class="hl">200 ประตู</span> และมีชานชาลาตั้ง 35 แพลตฟอร์ม ทั้งรถไฟบนดินและรถไฟใต้ดิน คนใช้ราว 3.6 ล้านคนต่อวัน 🚉 คนญี่ปุ่นเองก็ยังหลงบ่อย เรามีวิธีเอาตัวรอดง่าย ๆ คือ จำเลขทางออกที่ต้องออกไปให้ได้ก่อนลงใต้ดิน เช่น ออกทางตะวันออก เข้าทาง A4 — แล้วหลงก็ไต่ขึ้นมาเที่ยวไหนก็ได้ เหนื่อยก็แค่กาแฟ</p>
+  <div class="exits reveal">
+    <span>ประตู A1</span><span>ประตู B7</span><span>ประตู C12</span><span>ประตู East</span><span>ประตู D9</span><span>ประตู South</span><span>…อีก 194 ประตู</span>
+  </div>
+</section>
+
+<!-- SLIDE 6 — MICHELIN -->
+<section class="slide">
+  <div class="num">6 / 9</div>
+  <div class="reveal">
+    <div class="kicker">สวรรค์ของคนรักอาหาร</div>
+    <h2>เมืองที่มีดาวมิชลิน <span class="hl">เยอะที่สุดในโลก</span></h2>
+  </div>
+  <p class="lead reveal">โตเกียวเป็นเมืองที่มีร้านอาหารดาวมิชลินมากกว่าแถะปารีสเสียอีก — รวม ๆ แล้วมุมเมืองนี้มีร้านดาวมิชลินหลายร้อยร้าน 🍽️ และไม่ได้แพงหูหนวกเสมอไป เพราะมีร้านอาหารญี่ปุ่นของสำรับข้าวกล่องที่ราคาหลักร้อยเยน คุณลูกอยากลองต้มอุด้ง ราเม็ง ซูชิกับหม้อไก่ ได้ครบทุกมุมตึก แต่เตือนนิด — ราเม็งยอดนิยมบางร้านต้องคิวตั้งแต่บ่ายเอย</p>
+  <div class="steam"><i></i><i></i><i></i><i></i></div>
+</section>
+
+<!-- SLIDE 7 — DESTROYED & REBUILT -->
+<section class="slide">
+  <div class="num">7 / 9</div>
+  <div class="imgwrap reveal">
+    <img src="https://images.unsplash.com/photo-1536098561742-ca998e48cbcc?auto=format&fit=crop&w=900&q=70" alt="ย่านเมืองโตเกียว" loading="lazy">
+  </div>
+  <div class="reveal">
+    <div class="kicker">เมืองที่รื้อตัวเอง 2 ครั้ง</div>
+    <h2>โตเกียวถูกทำลายจนราบ 2 ครั้ง แล้ว <span class="hl">ลุกขึ้นมาจากขี้เถ้า</span></h2>
+  </div>
+  <p class="lead reveal">ปี 1923 แผ่นดินไหวคันโตและเพลิงไหม้กระชากเมืองให้เหลือแค่ซาก อีกครั้งคือปี 1945 ช่วงสงครามโลกทำให้เมืองอีกครึ่งหนึ่งถังลงไปอีก 🌏 แต่ทุกครั้งคนโตเกียวก็ปลูกเมืองขึ้นมาใหม่เสียอีก เมืองที่คุณลูกกำลังจะเหยียบ เมื่อยอนหลังไป 80 ปี กำลังเริ่มต้นได้พึ่งถูกลบออกจากแผนที่ไปเมื่อคืนก่อน</p>
+</section>
+
+<!-- SLIDE 8 — VENDING MACHINES -->
+<section class="slide">
+  <div class="num">8 / 9</div>
+  <div class="imgwrap glow reveal">
+    <img src="https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?auto=format&fit=crop&w=900&q=70" alt="ถนนโตเกียว" loading="lazy">
+  </div>
+  <div class="reveal">
+    <div class="kicker">เครื่องขายของอัตโนมัติตะวันเสือ</div>
+    <h2>พอดี <span class="hl">ตึก 1-2 ชั้น</span> ต่อเครื่องขายน้ำ 1 เครื่อง… เกือบแล้ว</h2>
+  </div>
+  <p class="lead reveal">ทั้งประเทศญี่ปุ่นมีเครื่องขายของอัตโนมัติราว <span class="hl">4 ล้านเครื่อง</span> ในโตเกียวอยู่ถนนเปล่า ๆ สายเดินยังมีเครื่องขายน้ำให้เจอทุก ๆ มุมแยก 🥤 ขายได้ตั้งแต่น้ำเปล่าร้อน กาแฟกระป๋องอุ่นกันหนาว ไปจนถึงของสดเงินสด ทำให้คุณลูกเดินออกไปแต่รำเท้า ก็ยังไม่ต้องซอยหาโอเคี้ยวแห้ง ๆ ซะเลย</p>
+</section>
+
+<!-- SLIDE 9 — FINAL -->
+<section class="slide" id="final">
+  <div class="num">9 / 9</div>
+  <div class="lantern reveal"></div>
+  <div class="reveal" style="margin-top:1.4rem">
+    <h2>คุณลูกกำลังจะไปบ้านของ<span class="hl"> 37 ล้านคน</span> ที่ขึ้นและรื้อตัวเองมาให้เห็นกันอย่างนี้ทุกวัน</h2>
+  </div>
+  <p class="lead reveal">เดี๋ยวเจอกันที่สถานีนะ นับถอยหลังทุกเช้า 10 โมงเลย ถ้าอยากอ่านซ้ำก็กดเริ่มกลับขึ้นด้านบนได้ คุณลูกจะเห็นแล้วตาเป็นประกายกว่าข้อความนี้มาก 🤗</p>
+  <div class="btns reveal">
+    <a class="btn" href="#hero">เลื่อนกลับไปอ่านตั้งแต่หน้าแรก 🔄</a>
+  </div>
+</section>
+
+<div class="decknav">
+  <a href="#hero">↑</a>
+  <a href="#final">↓</a>
+</div>
+
+<script>
+const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) e.target.classList.add('show'); }), {threshold:.25});
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+const counter = document.getElementById('counter');
+const cio = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) {
+  let v = 0; const id = setInterval(() => { v += 1; counter.textContent = v + ' ล้าน'; if (v >= 37) clearInterval(id); }, 50);
+  cio.disconnect(); } }), {threshold:.5});
+cio.observe(counter);
+
+const rain = document.getElementById('rain');
+for (let i = 0; i < 24; i++) {
+  const s = document.createElement('span');
+  s.style.left = (i * 4.2) + '%';
+  s.style.animationDuration = (2.6 + Math.random() * 2.4) + 's';
+  s.style.animationDelay = (Math.random() * 3) + 's';
+  rain.appendChild(s);
+}
+</script>
+</body>
+</html>
